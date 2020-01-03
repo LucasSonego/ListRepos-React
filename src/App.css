@@ -1,0 +1,49 @@
+html {
+  margin: 0;
+  padding: 0;
+  background-color: #282c34;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.top {
+  display: block;
+  text-align: center;
+}
+
+.titulo {
+  float: left;
+  margin: 10px 10px 10px 15px;
+}
+
+.search {
+  display: inline-block;
+}
+
+.input {
+  float: left;
+  margin: 25px 0 10px 3px;
+  font-size: 20px;
+  height: 20px;
+  width: 200px;
+  border: none;
+  border-bottom: 2px solid #fff;
+  background: none;
+  color: rgb(196, 196, 196);
+  outline: none;
+  font-weight: bold;
+}
+
+.gitlink {
+  float: left;
+}
+
+.gitlink {
+  margin: 14px 0 10px 0;
+  font-size: 28px;
+}
+
+::placeholder {
+  opacity: 0.1;
+  color: #fff;
+}
