@@ -1,0 +1,22 @@
+.user {
+  margin: 20px 10px 0 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 250px;
+  background-color: darkslategrey;
+  position: fixed;
+}
+.avatar {
+  width: 200px;
+  height: 200px;
+}
+
+.icon {
+  float: left;
+  margin: 3px 5px 0 0;
+}
+
+.blog a {
+  color: #fff;
+}
