@@ -2,23 +2,21 @@ import React, { useState } from "react";
 
 import "./App.css";
 import { FaUsers, FaMapMarkedAlt, FaLink } from "react-icons/fa";
+import Repo from "./components/Repo";
 
 function App() {
   const [user, setUser] = useState({
     prof: {},
-    repos: {}
+    repos: []
   });
 
   async function buscar() {
     const input = document.getElementById("input");
-    const prof = await fetch(`https://api.github.com/users/${input.value}`)
-      .then(response => response.json())
-      .then(data => data);
-    const repos = await fetch(prof.repos_url)
-      .then(response => response.json())
-      .then(data => data);
-
-    console.log(prof);
+    const prof = await fetch(
+      `https://api.github.com/users/${input.value}`
+    ).then(response => response.json());
+    const repos = await fetch(prof.repos_url).then(response => response.json());
+    console.log(repos);
 
     setUser({
       prof,
@@ -75,6 +73,15 @@ function App() {
               </a>
             </div>
           )}
+        </div>
+        <div className="repos">
+          <ul className="repos">
+            {user.repos.map(r => (
+              <li className="repo" key={r.id}>
+                <Repo repo={r} />
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>
