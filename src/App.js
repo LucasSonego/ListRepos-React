@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 import "./App.css";
-import { FaUsers, FaMapMarkedAlt, FaLink } from "react-icons/fa";
 import Repo from "./components/Repo";
+import User from "./components/User";
 
 function App() {
   const [user, setUser] = useState({
@@ -39,50 +39,20 @@ function App() {
           />
           <button onClick={() => buscar()}>Buscar</button>
         </div>
-        <div className="userInfo">
-          {user.prof.avatar_url && (
-            <img
-              src={user.prof.avatar_url}
-              alt={user.prof.login}
-              className="avatar"
-            />
-          )}
-          {user.prof.name && <h3 className="name">{user.prof.name}</h3>}
-          {user.prof.bio && <p className="bio">{user.prof.bio}</p>}
-          {user.prof.company && (
-            <div className="company">
-              <FaUsers className="icons" />
-              <p className="company">{user.prof.company}</p>
-            </div>
-          )}
-          {user.prof.location && (
-            <div className="location">
-              <FaMapMarkedAlt className="icons" />
-              <p className="location">{user.prof.location}</p>
-            </div>
-          )}
-          {user.prof.blog && (
-            <div className="blog">
-              <FaLink className="icons" />
-              <a
-                href={`http://${user.prof.blog}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {user.prof.blog}
-              </a>
-            </div>
-          )}
-        </div>
-        <div className="repos">
-          <ul className="repos">
-            {user.repos.map(r => (
-              <li className="repo" key={r.id}>
-                <Repo repo={r} />
-              </li>
-            ))}
-          </ul>
-        </div>
+      </div>
+
+      <div className="userInfo">
+        <User prof={user.prof} />
+      </div>
+
+      <div className="repos">
+        <ul className="repos-list">
+          {user.repos.map(r => (
+            <li className="repo" key={r.id}>
+              <Repo repo={r} />
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
