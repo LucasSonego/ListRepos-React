@@ -6,12 +6,13 @@ html {
   box-sizing: border-box;
 }
 
-.App{
+.App {
   display: grid;
   grid-template-columns: min-content auto;
   grid-template-rows: 80px auto;
-  grid-template-areas: "header header"
-                       "user repos";
+  grid-template-areas:
+    "header header"
+    "user repos";
 }
 
 .top {
@@ -20,11 +21,11 @@ html {
   text-align: center;
 }
 
-.userInfo{
+.userInfo {
   grid-area: user;
 }
 
-.repos{
+.repos {
   grid-area: repos;
 }
 
@@ -63,4 +64,9 @@ html {
 ::placeholder {
   opacity: 0.1;
   color: #fff;
+}
+
+ul {
+  margin-top: 10px;
+  padding-inline-start: 5px;
 }
