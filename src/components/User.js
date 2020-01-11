@@ -1,11 +1,13 @@
 import React from "react";
 import { FaUsers, FaMapMarkedAlt, FaLink } from "react-icons/fa";
 
+import "./User.css"
+
 export default function User(props) {
   const prof = props.prof;
 
   return (
-    <>
+    <div className="userInfo">
       {prof.avatar_url && (
         <img src={prof.avatar_url} alt={prof.login} className="avatar" />
       )}
@@ -35,6 +37,6 @@ export default function User(props) {
           </a>
         </div>
       )}
-    </>
+    </div>
   );
 }
