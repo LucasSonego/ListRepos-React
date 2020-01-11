@@ -41,9 +41,8 @@ function App() {
         </div>
       </div>
 
-      <div className="userInfo">
-        <User prof={user.prof} />
-      </div>
+      <User prof={user.prof} />
+
 
       <div className="repos">
         <ul className="repos-list">
