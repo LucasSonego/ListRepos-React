@@ -37,12 +37,13 @@ function App() {
             type="text"
             spellCheck="false"
           />
-          <button onClick={() => buscar()}>Buscar</button>
+          <button className="btn-buscar" onClick={() => buscar()}>
+            Buscar
+          </button>
         </div>
       </div>
 
       <User prof={user.prof} />
-
 
       <div className="repos">
         <ul className="repos-list">
