@@ -6,9 +6,46 @@ html {
   box-sizing: border-box;
 }
 
+.App {
+  display: grid;
+  grid-template-columns: min-content auto;
+  grid-template-rows: 80px auto;
+  grid-template-areas:
+    "header header"
+    "user repos";
+}
+
 .top {
+  grid-area: header;
   display: block;
   text-align: center;
+  background-color: #34495e;
+  margin: 10px 10px 0 10px;
+  border-radius: 5px;
+}
+
+.btn-buscar {
+  margin: 15px 0 0 5px;
+  padding: 7px 24px;
+  border-radius: 5px;
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  transition-duration: 0.5s;
+  outline: none;
+}
+
+.btn-buscar:hover {
+  background-color: #fff;
+  color: #34495e;
+}
+
+.userInfo {
+  grid-area: user;
+}
+
+.repos {
+  grid-area: repos;
 }
 
 .titulo {
@@ -46,4 +83,9 @@ html {
 ::placeholder {
   opacity: 0.1;
   color: #fff;
+}
+
+ul {
+  margin-top: 10px;
+  padding-inline-start: 5px;
 }
