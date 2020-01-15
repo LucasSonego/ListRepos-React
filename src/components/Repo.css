@@ -73,3 +73,7 @@ h3 {
 .titles p {
   margin-block-end: 0;
 }
+
+.repo a {
+  text-decoration: none;
+}

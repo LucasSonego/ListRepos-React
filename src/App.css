@@ -9,7 +9,7 @@ html {
 .App {
   display: grid;
   grid-template-columns: min-content auto;
-  grid-template-rows: 80px auto;
+  grid-template-rows: min-content auto;
   grid-template-areas:
     "header header"
     "user repos";
@@ -24,7 +24,20 @@ html {
   border-radius: 5px;
 }
 
-.btn-buscar {
+.sitename {
+  float: left;
+  margin: 10px 10px 10px 15px;
+}
+
+.gitlink {
+  float: left;
+}
+
+.search {
+  display: inline-block;
+}
+
+.btn-search {
   margin: 15px 0 0 5px;
   padding: 7px 24px;
   border-radius: 5px;
@@ -35,32 +48,15 @@ html {
   outline: none;
 }
 
-.btn-buscar:hover {
+.btn-search:hover {
   background-color: #fff;
   color: #34495e;
 }
 
-.userInfo {
-  grid-area: user;
-}
-
-.repos {
-  grid-area: repos;
-}
-
-.titulo {
-  float: left;
-  margin: 10px 10px 10px 15px;
-}
-
-.search {
-  display: inline-block;
-}
-
 .input {
   float: left;
-  margin: 25px 0 10px 3px;
-  font-size: 20px;
+  margin: 23px 0 10px 3px;
+  font-size: 22px;
   height: 20px;
   width: 200px;
   border: none;
@@ -72,11 +68,7 @@ html {
 }
 
 .gitlink {
-  float: left;
-}
-
-.gitlink {
-  margin: 14px 0 10px 0;
+  margin: 12px 0 12px 0;
   font-size: 28px;
 }
 
@@ -85,7 +77,19 @@ html {
   color: #fff;
 }
 
+.userInfo {
+  grid-area: user;
+}
+
+.repos {
+  grid-area: repos;
+}
+
 ul {
   margin-top: 10px;
   padding-inline-start: 5px;
+}
+
+.repo:hover {
+  background-color: #3c536b;
 }
