@@ -9,7 +9,7 @@ html {
 .App {
   display: grid;
   grid-template-columns: min-content auto;
-  grid-template-rows: 80px auto;
+  grid-template-rows: min-content auto;
   grid-template-areas:
     "header header"
     "user repos";
@@ -59,8 +59,8 @@ html {
 
 .input {
   float: left;
-  margin: 25px 0 10px 3px;
-  font-size: 20px;
+  margin: 23px 0 10px 3px;
+  font-size: 22px;
   height: 20px;
   width: 200px;
   border: none;
@@ -76,7 +76,7 @@ html {
 }
 
 .gitlink {
-  margin: 14px 0 10px 0;
+  margin: 12px 0 12px 0;
   font-size: 28px;
 }
 
