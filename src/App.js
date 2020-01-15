@@ -10,13 +10,12 @@ function App() {
     repos: []
   });
 
-  async function buscar() {
+  async function search() {
     const input = document.getElementById("input");
     const prof = await fetch(
       `https://api.github.com/users/${input.value}`
     ).then(response => response.json());
     const repos = await fetch(prof.repos_url).then(response => response.json());
-    console.log(repos);
 
     setUser({
       prof,
@@ -26,7 +25,7 @@ function App() {
 
   function handleEnterKey() {
     if (window.event.keyCode === 13) {
-      buscar();
+      search();
       let input = document.getElementById("input");
       input.blur();
     }
@@ -35,7 +34,7 @@ function App() {
   return (
     <div className="App">
       <div className="top">
-        <h1 className="titulo">ListRepos</h1>
+        <h1 className="sitename">ListRepos</h1>
         <div className="search">
           <h2 className="gitlink">github.com/</h2>
           <input
@@ -46,7 +45,7 @@ function App() {
             spellCheck="false"
             onKeyPress={handleEnterKey}
           />
-          <button className="btn-buscar" onClick={() => buscar()}>
+          <button className="btn-search" onClick={() => search()}>
             Buscar
           </button>
         </div>
