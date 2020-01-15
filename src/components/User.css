@@ -1,21 +1,21 @@
-.userInfo{
-    margin: 10px;
-    padding: 15px;
-    background-color: #34495e;
-    border-radius: 5px;
-    height: fit-content;
-    width: fit-content;
+.userInfo {
+  margin: 10px;
+  padding: 15px;
+  background-color: #34495e;
+  border-radius: 5px;
+  height: fit-content;
+  width: fit-content;
 }
 
-.icons{
-    float: left;
-    margin: 3px 5px;
+.icons {
+  float: left;
+  margin: 3px 5px;
 }
 
-.avatar{
-    height: 300px;
+.avatar {
+  height: 300px;
 }
 
-a{
-    color: aliceblue;
+a {
+  color: aliceblue;
 }

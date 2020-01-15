@@ -24,7 +24,20 @@ html {
   border-radius: 5px;
 }
 
-.btn-buscar {
+.sitename {
+  float: left;
+  margin: 10px 10px 10px 15px;
+}
+
+.gitlink {
+  float: left;
+}
+
+.search {
+  display: inline-block;
+}
+
+.btn-search {
   margin: 15px 0 0 5px;
   padding: 7px 24px;
   border-radius: 5px;
@@ -35,26 +48,9 @@ html {
   outline: none;
 }
 
-.btn-buscar:hover {
+.btn-search:hover {
   background-color: #fff;
   color: #34495e;
-}
-
-.userInfo {
-  grid-area: user;
-}
-
-.repos {
-  grid-area: repos;
-}
-
-.titulo {
-  float: left;
-  margin: 10px 10px 10px 15px;
-}
-
-.search {
-  display: inline-block;
 }
 
 .input {
@@ -72,10 +68,6 @@ html {
 }
 
 .gitlink {
-  float: left;
-}
-
-.gitlink {
   margin: 12px 0 12px 0;
   font-size: 28px;
 }
@@ -83,6 +75,14 @@ html {
 ::placeholder {
   opacity: 0.1;
   color: #fff;
+}
+
+.userInfo {
+  grid-area: user;
+}
+
+.repos {
+  grid-area: repos;
 }
 
 ul {
