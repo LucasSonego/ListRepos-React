@@ -24,6 +24,14 @@ function App() {
     });
   }
 
+  function handleEnterKey() {
+    if (window.event.keyCode === 13) {
+      buscar();
+      let input = document.getElementById("input");
+      input.blur();
+    }
+  }
+
   return (
     <div className="App">
       <div className="top">
@@ -36,6 +44,7 @@ function App() {
             placeholder="username"
             type="text"
             spellCheck="false"
+            onKeyPress={handleEnterKey}
           />
           <button className="btn-buscar" onClick={() => buscar()}>
             Buscar
