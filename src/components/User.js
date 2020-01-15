@@ -1,7 +1,7 @@
 import React from "react";
 import { FaUsers, FaMapMarkedAlt, FaLink } from "react-icons/fa";
 
-import "./User.css"
+import "./User.css";
 
 export default function User(props) {
   const prof = props.prof;

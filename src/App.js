@@ -52,17 +52,21 @@ function App() {
         </div>
       </div>
 
-      <User prof={user.prof} />
+      {user.prof.id && (
+        <>
+          <User prof={user.prof} />
 
-      <div className="repos">
-        <ul className="repos-list">
-          {user.repos.map(r => (
-            <li className="repo" key={r.id}>
-              <Repo repo={r} />
-            </li>
-          ))}
-        </ul>
-      </div>
+          <div className="repos">
+            <ul className="repos-list">
+              {user.repos.map(r => (
+                <li className="repo" key={r.id}>
+                  <Repo repo={r} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </>
+      )}
     </div>
   );
 }
