@@ -1,5 +1,14 @@
 import React, { useState } from "react";
 
+import {
+  Container,
+  Topbar,
+  Title,
+  SearchBar,
+  GitLink,
+  ButtonBuscar,
+  UsernameInput
+} from "./styles";
 import "./App.css";
 import Repo from "./components/Repo";
 import User from "./components/User";
@@ -32,24 +41,21 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <div className="top">
-        <h1 className="sitename">ListRepos</h1>
-        <div className="search">
-          <h2 className="gitlink">github.com/</h2>
-          <input
-            className="input"
+    <Container>
+      <Topbar>
+        <Title>ListRepos</Title>
+        <SearchBar>
+          <GitLink>github.com/</GitLink>
+          <UsernameInput
             id="input"
             placeholder="username"
             type="text"
             spellCheck="false"
             onKeyPress={handleEnterKey}
           />
-          <button className="btn-search" onClick={() => search()}>
-            Buscar
-          </button>
-        </div>
-      </div>
+          <ButtonBuscar onClick={() => search()}>Buscar</ButtonBuscar>
+        </SearchBar>
+      </Topbar>
 
       {user.prof.id && (
         <>
@@ -66,7 +72,7 @@ function App() {
           </div>
         </>
       )}
-    </div>
+    </Container>
   );
 }
 
