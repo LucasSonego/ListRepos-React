@@ -11,7 +11,7 @@ import {
 } from "./styles";
 import "./App.css";
 import Repo from "./components/Repo";
-import User from "./components/User";
+import User from "./components/User/User";
 
 function App() {
   const [user, setUser] = useState({

@@ -1,32 +1,30 @@
 import React from "react";
 import { FaUsers, FaMapMarkedAlt, FaLink } from "react-icons/fa";
 
-import "./User.css";
+import { UserInfo, Avatar, Info } from "./styles";
 
 export default function User(props) {
   const prof = props.prof;
 
   return (
-    <div className="userInfo">
-      {prof.avatar_url && (
-        <img src={prof.avatar_url} alt={prof.login} className="avatar" />
-      )}
+    <UserInfo>
+      {prof.avatar_url && <Avatar src={prof.avatar_url} alt={prof.login} />}
       {prof.name && <h3 className="name">{prof.name}</h3>}
-      {prof.bio && <p className="bio">{prof.bio}</p>}
+      {prof.bio && <Info>{prof.bio}</Info>}
       {prof.company && (
-        <div className="company">
+        <div>
           <FaUsers className="icons" />
-          <p className="company">{prof.company}</p>
+          <Info>{prof.company}</Info>
         </div>
       )}
       {prof.location && (
-        <div className="location">
+        <div>
           <FaMapMarkedAlt className="icons" />
           <p className="location">{prof.location}</p>
         </div>
       )}
       {prof.blog && (
-        <div className="blog">
+        <div>
           <FaLink className="icons" />
           <a
             href={`http://${prof.blog}`}
@@ -37,6 +35,6 @@ export default function User(props) {
           </a>
         </div>
       )}
-    </div>
+    </UserInfo>
   );
 }
