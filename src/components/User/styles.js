@@ -27,6 +27,11 @@ export const Avatar = styled.img`
   width: 300px;
 `;
 
+export const UserName = styled.h3`
+  margin: 0;
+  color: #fff;
+`;
+
 export const Info = styled.p`
   color: ${infoColor};
 `;
