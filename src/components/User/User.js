@@ -1,7 +1,7 @@
 import React from "react";
 import { FaUsers, FaMapMarkedAlt, FaLink } from "react-icons/fa";
 
-import { UserInfo, Avatar, Info } from "./styles";
+import { UserInfo, Avatar, UserName, Info } from "./styles";
 
 export default function User(props) {
   const prof = props.prof;
@@ -9,7 +9,7 @@ export default function User(props) {
   return (
     <UserInfo>
       {prof.avatar_url && <Avatar src={prof.avatar_url} alt={prof.login} />}
-      {prof.name && <h3 className="name">{prof.name}</h3>}
+      {prof.name && <UserName>{prof.name}</UserName>}
       {prof.bio && <Info>{prof.bio}</Info>}
       {prof.company && (
         <div>
@@ -20,7 +20,7 @@ export default function User(props) {
       {prof.location && (
         <div>
           <FaMapMarkedAlt className="icons" />
-          <p className="location">{prof.location}</p>
+          <Info>{prof.location}</Info>
         </div>
       )}
       {prof.blog && (
