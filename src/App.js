@@ -7,10 +7,10 @@ import {
   SearchBar,
   GitLink,
   ButtonBuscar,
-  UsernameInput
+  UsernameInput,
+  RepoList
 } from "./styles";
-import "./App.css";
-import Repo from "./components/Repo";
+import Repo from "./components/Repo/Repo";
 import User from "./components/User/User";
 
 function App() {
@@ -61,15 +61,13 @@ function App() {
         <>
           <User prof={user.prof} />
 
-          <div className="repos">
-            <ul className="repos-list">
-              {user.repos.map(r => (
-                <li className="repo" key={r.id}>
-                  <Repo repo={r} />
-                </li>
-              ))}
-            </ul>
-          </div>
+          <RepoList>
+            {user.repos.map(r => (
+              <li className="repo" key={r.id}>
+                <Repo repo={r} />
+              </li>
+            ))}
+          </RepoList>
         </>
       )}
     </Container>

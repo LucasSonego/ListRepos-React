@@ -68,3 +68,10 @@ export const ButtonBuscar = styled.button`
     color: ${background};
   }
 `;
+
+export const RepoList = styled.ul`
+  grid-area: repos;
+  list-style: none;
+  margin: 10px 0 0 0;
+  padding-inline-start: 5px;
+`;
