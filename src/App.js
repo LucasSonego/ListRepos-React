@@ -1,15 +1,8 @@
 import React, { useState } from "react";
 
-import {
-  Container,
-  Topbar,
-  Title,
-  SearchBar,
-  GitLink,
-  ButtonBuscar,
-  UsernameInput,
-  RepoList
-} from "./styles";
+import { Container, Topbar, Title, RepoList } from "./styles";
+
+import SearchBar from "./components/SearchBar/SearchBar";
 import Repo from "./components/Repo/Repo";
 import User from "./components/User/User";
 
@@ -44,17 +37,7 @@ function App() {
     <Container>
       <Topbar>
         <Title>ListRepos</Title>
-        <SearchBar>
-          <GitLink>github.com/</GitLink>
-          <UsernameInput
-            id="input"
-            placeholder="username"
-            type="text"
-            spellCheck="false"
-            onKeyPress={handleEnterKey}
-          />
-          <ButtonBuscar onClick={() => search()}>Buscar</ButtonBuscar>
-        </SearchBar>
+        <SearchBar handleEnterKey={handleEnterKey} search={() => search()} />
       </Topbar>
 
       {user.prof.id && (
