@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 
 var background = "#34495e";
 var textColor = "#FFF";
@@ -32,6 +32,15 @@ export const UsernameInput = styled.input`
   }
 `;
 
+const rotate = keyframes`
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+`;
+
 export const SearchButton = styled.button`
   margin: 15px 0 0 5px;
   padding: 7px 24px;
@@ -45,4 +54,12 @@ export const SearchButton = styled.button`
     background-color: ${textColor};
     color: ${background};
   }
+
+  ${props =>
+    props.loading === "loading" &&
+    css`
+      svg {
+        animation: ${rotate} 0.5s linear infinite;
+      }
+    `}
 `;
