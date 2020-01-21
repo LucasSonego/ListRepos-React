@@ -14,10 +14,15 @@ function App() {
 
   async function search() {
     const input = document.getElementById("input");
-    const prof = await fetch(
-      `https://api.github.com/users/${input.value}`
-    ).then(response => response.json());
-    const repos = await fetch(prof.repos_url).then(response => response.json());
+
+    const [prof, repos] = await Promise.all([
+      fetch(`https://api.github.com/users/${input.value}`).then(response =>
+        response.json()
+      ),
+      fetch(
+        `https://api.github.com/users/${input.value}/repos`
+      ).then(response => response.json())
+    ]);
 
     setUser({
       prof,
