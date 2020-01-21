@@ -12,9 +12,12 @@ function App() {
     repos: []
   });
 
+  const [loading, setLoading] = useState(false);
+
   async function search() {
     const input = document.getElementById("input");
 
+    setLoading(true);
     const [prof, repos] = await Promise.all([
       fetch(`https://api.github.com/users/${input.value}`).then(response =>
         response.json()
@@ -23,11 +26,17 @@ function App() {
         `https://api.github.com/users/${input.value}/repos`
       ).then(response => response.json())
     ]);
+    setLoading(false);
 
-    setUser({
-      prof,
-      repos
-    });
+    if (prof.message === "Not Found") {
+      input.focus();
+      input.select();
+    } else {
+      setUser({
+        prof,
+        repos
+      });
+    }
   }
 
   function handleEnterKey() {
@@ -42,7 +51,11 @@ function App() {
     <Container>
       <Topbar>
         <Title>ListRepos</Title>
-        <SearchBar handleEnterKey={handleEnterKey} search={() => search()} />
+        <SearchBar
+          handleEnterKey={handleEnterKey}
+          search={() => search()}
+          loading={loading}
+        />
       </Topbar>
 
       {user.prof.id && (
