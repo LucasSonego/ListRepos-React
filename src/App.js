@@ -15,20 +15,12 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   async function search() {
-    const input = document.getElementById("input");
-
     setLoading(true);
-    const [prof, repos] = await Promise.all([
-      fetch(`https://api.github.com/users/${input.value}`).then(response =>
-        response.json()
-      ),
-      fetch(
-        `https://api.github.com/users/${input.value}/repos`
-      ).then(response => response.json())
-    ]);
+    const { prof, repos } = await getApiData();
     setLoading(false);
 
     if (prof.message === "Not Found") {
+      const input = document.getElementById("input");
       input.focus();
       input.select();
     } else {
@@ -37,6 +29,23 @@ function App() {
         repos
       });
     }
+  }
+
+  async function getApiData() {
+    const input = document.getElementById("input");
+
+    const [prof, repos] = await Promise.all([
+      fetch(`https://api.github.com/users/${input.value}`).then(response =>
+        response.json()
+      ),
+      fetch(
+        `https://api.github.com/users/${input.value}/repos`
+      ).then(response => response.json())
+    ]);
+
+    const userData = { prof, repos };
+
+    return userData;
   }
 
   function handleEnterKey() {
