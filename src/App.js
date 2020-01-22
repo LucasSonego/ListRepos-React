@@ -1,15 +1,8 @@
 import React, { useState } from "react";
 
-import {
-  Container,
-  Topbar,
-  Title,
-  SearchBar,
-  GitLink,
-  ButtonBuscar,
-  UsernameInput,
-  RepoList
-} from "./styles";
+import { Container, Topbar, Title, RepoList } from "./styles";
+
+import SearchBar from "./components/SearchBar/SearchBar";
 import Repo from "./components/Repo/Repo";
 import User from "./components/User/User";
 
@@ -19,17 +12,40 @@ function App() {
     repos: []
   });
 
-  async function search() {
-    const input = document.getElementById("input");
-    const prof = await fetch(
-      `https://api.github.com/users/${input.value}`
-    ).then(response => response.json());
-    const repos = await fetch(prof.repos_url).then(response => response.json());
+  const [loading, setLoading] = useState(false);
 
-    setUser({
-      prof,
-      repos
-    });
+  async function search() {
+    setLoading(true);
+    const { prof, repos } = await getApiData();
+    setLoading(false);
+
+    if (prof.message === "Not Found") {
+      const input = document.getElementById("input");
+      input.focus();
+      input.select();
+    } else {
+      setUser({
+        prof,
+        repos
+      });
+    }
+  }
+
+  async function getApiData() {
+    const input = document.getElementById("input");
+
+    const [prof, repos] = await Promise.all([
+      fetch(`https://api.github.com/users/${input.value}`).then(response =>
+        response.json()
+      ),
+      fetch(
+        `https://api.github.com/users/${input.value}/repos`
+      ).then(response => response.json())
+    ]);
+
+    const userData = { prof, repos };
+
+    return userData;
   }
 
   function handleEnterKey() {
@@ -44,17 +60,11 @@ function App() {
     <Container>
       <Topbar>
         <Title>ListRepos</Title>
-        <SearchBar>
-          <GitLink>github.com/</GitLink>
-          <UsernameInput
-            id="input"
-            placeholder="username"
-            type="text"
-            spellCheck="false"
-            onKeyPress={handleEnterKey}
-          />
-          <ButtonBuscar onClick={() => search()}>Buscar</ButtonBuscar>
-        </SearchBar>
+        <SearchBar
+          handleEnterKey={handleEnterKey}
+          search={() => search()}
+          loading={loading}
+        />
       </Topbar>
 
       {user.prof.id && (
