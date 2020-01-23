@@ -13,6 +13,7 @@ export default function SearchBar(props) {
         type="text"
         spellCheck="false"
         onKeyPress={props.handleEnterKey}
+        ref={props.inputRef}
       />
       <SearchButton
         onClick={() => props.search()}
