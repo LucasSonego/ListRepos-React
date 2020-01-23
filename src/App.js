@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import { Container, Topbar, Title, RepoList } from "./styles";
 
@@ -12,6 +12,8 @@ function App() {
     repos: []
   });
 
+  const inputEl = useRef(null);
+
   const [loading, setLoading] = useState(false);
 
   async function search() {
@@ -20,9 +22,8 @@ function App() {
     setLoading(false);
 
     if (prof.message === "Not Found") {
-      const input = document.getElementById("input");
-      input.focus();
-      input.select();
+      inputEl.current.focus();
+      inputEl.current.select();
     } else {
       setUser({
         prof,
@@ -32,14 +33,12 @@ function App() {
   }
 
   async function getApiData() {
-    const input = document.getElementById("input");
-
     const [prof, repos] = await Promise.all([
-      fetch(`https://api.github.com/users/${input.value}`).then(response =>
-        response.json()
-      ),
       fetch(
-        `https://api.github.com/users/${input.value}/repos`
+        `https://api.github.com/users/${inputEl.current.value}`
+      ).then(response => response.json()),
+      fetch(
+        `https://api.github.com/users/${inputEl.current.value}/repos`
       ).then(response => response.json())
     ]);
 
@@ -51,8 +50,7 @@ function App() {
   function handleEnterKey() {
     if (window.event.keyCode === 13) {
       search();
-      let input = document.getElementById("input");
-      input.blur();
+      inputEl.current.blur();
     }
   }
 
@@ -64,6 +62,7 @@ function App() {
           handleEnterKey={handleEnterKey}
           search={() => search()}
           loading={loading}
+          inputRef={inputEl}
         />
       </Topbar>
 
