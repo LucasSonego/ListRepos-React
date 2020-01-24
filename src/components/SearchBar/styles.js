@@ -1,8 +1,8 @@
 import styled, { keyframes, css } from "styled-components";
 
-var background = "#34495e";
-var textColor = "#FFF";
-var inputTextColor = "#c4c4c4";
+const background = "#34495e";
+const textColor = "#FFF";
+const inputTextColor = "#c4c4c4";
 
 export const Container = styled.div`
   display: inline-block;
@@ -56,7 +56,7 @@ export const SearchButton = styled.button`
   }
 
   ${props =>
-    props.loading === "loading" &&
+    props.loadingState === "loading" &&
     css`
       svg {
         animation: ${rotate} 0.5s linear infinite;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import { Container, Topbar, Title, RepoList } from "./styles";
 
@@ -14,15 +14,15 @@ function App() {
 
   const [loading, setLoading] = useState(false);
 
+  const inputEl = useRef(null);
+
   async function search() {
     setLoading(true);
     const { prof, repos } = await getApiData();
     setLoading(false);
 
     if (prof.message === "Not Found") {
-      const input = document.getElementById("input");
-      input.focus();
-      input.select();
+      inputEl.current.focus();
     } else {
       setUser({
         prof,
@@ -32,28 +32,28 @@ function App() {
   }
 
   async function getApiData() {
-    const input = document.getElementById("input");
-
     const [prof, repos] = await Promise.all([
-      fetch(`https://api.github.com/users/${input.value}`).then(response =>
-        response.json()
-      ),
       fetch(
-        `https://api.github.com/users/${input.value}/repos`
+        `https://api.github.com/users/${inputEl.current.value}`
+      ).then(response => response.json()),
+      fetch(
+        `https://api.github.com/users/${inputEl.current.value}/repos`
       ).then(response => response.json())
     ]);
 
-    const userData = { prof, repos };
-
-    return userData;
+    return { prof, repos };
   }
 
   function handleEnterKey() {
-    if (window.event.keyCode === 13) {
+    const ENTER = 13;
+    if (window.event.keyCode === ENTER) {
       search();
-      let input = document.getElementById("input");
-      input.blur();
+      inputEl.current.blur();
     }
+  }
+
+  function selectText() {
+    inputEl.current.select();
   }
 
   return (
@@ -61,9 +61,11 @@ function App() {
       <Topbar>
         <Title>ListRepos</Title>
         <SearchBar
-          handleEnterKey={handleEnterKey}
-          search={() => search()}
-          loading={loading}
+          onKeyPress={handleEnterKey}
+          onFocus={selectText}
+          searchFunction={search}
+          loadingState={loading}
+          inputRef={inputEl}
         />
       </Topbar>
 
