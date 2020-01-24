@@ -12,9 +12,9 @@ function App() {
     repos: []
   });
 
-  const inputEl = useRef(null);
-
   const [loading, setLoading] = useState(false);
+
+  const inputEl = useRef(null);
 
   async function search() {
     setLoading(true);
@@ -42,13 +42,12 @@ function App() {
       ).then(response => response.json())
     ]);
 
-    const userData = { prof, repos };
-
-    return userData;
+    return { prof, repos };
   }
 
   function handleEnterKey() {
-    if (window.event.keyCode === 13) {
+    const ENTER = 13;
+    if (window.event.keyCode === ENTER) {
       search();
       inputEl.current.blur();
     }
@@ -59,9 +58,9 @@ function App() {
       <Topbar>
         <Title>ListRepos</Title>
         <SearchBar
-          handleEnterKey={handleEnterKey}
-          search={() => search()}
-          loading={loading}
+          onKeyPress={handleEnterKey}
+          searchFunction={() => search()}
+          loadingState={loading}
           inputRef={inputEl}
         />
       </Topbar>
