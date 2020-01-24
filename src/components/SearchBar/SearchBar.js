@@ -8,18 +8,17 @@ export default function SearchBar(props) {
     <Container>
       <GitLink>github.com/</GitLink>
       <UsernameInput
-        id="input"
         placeholder="username"
         type="text"
         spellCheck="false"
-        onKeyPress={props.handleEnterKey}
+        onKeyPress={props.onKeyPress}
         ref={props.inputRef}
       />
       <SearchButton
-        onClick={() => props.search()}
-        loading={props.loading ? "loading" : undefined}
+        onClick={() => props.searchFunction()}
+        loadingState={props.loadingState ? "loading" : undefined}
       >
-        {props.loading ? <FaSpinner /> : <FaSearch />}
+        {props.loadingState ? <FaSpinner /> : <FaSearch />}
       </SearchButton>
     </Container>
   );

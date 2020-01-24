@@ -26,11 +26,7 @@ export default function User(props) {
       {prof.blog && (
         <div>
           <FaLink className="icons" />
-          <a
-            href={`http://${prof.blog}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href={prof.blog} target="_blank" rel="noopener noreferrer">
             {prof.blog}
           </a>
         </div>
