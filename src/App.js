@@ -23,7 +23,6 @@ function App() {
 
     if (prof.message === "Not Found") {
       inputEl.current.focus();
-      inputEl.current.select();
     } else {
       setUser({
         prof,
@@ -53,13 +52,18 @@ function App() {
     }
   }
 
+  function selectText() {
+    inputEl.current.select();
+  }
+
   return (
     <Container>
       <Topbar>
         <Title>ListRepos</Title>
         <SearchBar
           onKeyPress={handleEnterKey}
-          searchFunction={() => search()}
+          onFocus={selectText}
+          searchFunction={search}
           loadingState={loading}
           inputRef={inputEl}
         />
