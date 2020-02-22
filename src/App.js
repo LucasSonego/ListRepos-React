@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { GoMarkGithub } from "react-icons/go";
 
 import { Container, Topbar, Title, RepoList } from "./styles";
 
@@ -67,6 +68,13 @@ function App() {
           loadingState={loading}
           inputRef={inputEl}
         />
+        <a
+          href="https://github.com/LucasSonego"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <GoMarkGithub size="36px" color="#eee" />
+        </a>
       </Topbar>
 
       {user.prof.id && (
