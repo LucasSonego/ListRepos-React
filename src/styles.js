@@ -13,16 +13,30 @@ export const Container = styled.div`
 
 export const Topbar = styled.div`
   grid-area: header;
-  display: block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   text-align: center;
   background-color: ${background};
   margin: 10px 10px 0 10px;
+  padding: 10px;
   border-radius: 5px;
+
+  > a {
+    padding: 3px 3px 0 0;
+
+    svg {
+      transition: 0.3s opacity;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
 `;
 
 export const Title = styled.h1`
   float: left;
-  margin: 10px 10px 10px 15px;
+  margin: 0 0 0 5px;
 `;
 
 export const RepoList = styled.ul`
