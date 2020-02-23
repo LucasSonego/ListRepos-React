@@ -10,15 +10,13 @@ export const RepoLink = styled.a`
 
 export const RepoInfo = styled.div`
   background-color: ${background};
-  margin: 0 10px 10px 0;
-  padding: 5px;
+  padding: 20px;
   border-radius: 5px;
   color: ${textColor};
+  margin: 0 10px 10px 0;
 
-  display: grid;
-  grid-template-columns: auto min-content;
-  grid-template-rows: min-content;
-  grid-template-areas: "titles details";
+  display: flex;
+  justify-content: space-between;
 
   &:hover {
     background-color: ${hoverColor};
@@ -27,10 +25,9 @@ export const RepoInfo = styled.div`
 
 export const Titles = styled.div`
   float: left;
-  grid-area: titles;
   align-self: center;
   vertical-align: center;
-  margin: 10px 0 10px 10px;
+  margin: 0 40px 0 0;
 
   p {
     margin-block-end: 0;
@@ -53,11 +50,10 @@ export const RepoDescription = styled.p`
 `;
 
 export const Details = styled.div`
-  grid-area: details;
-  align-items: center;
-  align-content: center;
-  vertical-align: center;
-  margin: auto 20px auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: auto 0;
 
   .icons {
     float: left;
